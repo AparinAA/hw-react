@@ -1,0 +1,77 @@
+.modal {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalQuestion {
+    display: flex;
+    flex-direction: column;
+    width: 344px;
+    height: 168px;
+    padding: 24px;
+    border-radius: 8px;
+    gap: 24px;
+    background: var(--white);
+    z-index: 10;
+}
+
+.titleModal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleTextModal {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    color: var(--text-primary);
+}
+
+.modalText {
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+}
+
+.modalButtons {
+    display: flex;
+    gap: 8px;
+}
+
+.button {
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+}
+
+.buttonFill {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.buttonFill:hover {
+    background-color: var(--orange-hover);
+}
+
+.buttonEmpty {
+    color: var(--orange);
+    border: 1px solid var(--orange);
+}
+
+.buttonEmpty:hover {
+    color: var(--orange-hover);
+    border: 1px solid var(--orange-hover);
+}

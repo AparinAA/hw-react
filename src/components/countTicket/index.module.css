@@ -1,0 +1,25 @@
+.counterStyle {
+    display: flex;
+    gap: 8px;
+    height: max-content;
+    width: max-content;
+}
+
+.active {
+    color: var(--orange);
+}
+
+.disabled {
+    color: var(--orange-disabled);
+}
+
+.button:hover {
+    color: var(--orange-hover);
+}
+
+.counter {
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+}

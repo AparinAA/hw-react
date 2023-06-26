@@ -1,7 +1,12 @@
-Все кинотеатры: http://localhost:3001/api/cinemas-  
+-   Портал для фильтров **Dropdown** находятся _/src/components/filter/Dropdown.tsx_
+-   Портал для модалки на удаление находится _/src/components/card/CardFilm.tsx_
+-   Дебаунс для input _/src/components/filter/Filter.tsx_
+
+Все кинотеатры: http://localhost:3001/api/cinemas  
 Response:
+
 ```
-[ 
+[
     {
         "id": string, //"CTfrB5PGEJHBwxCNlU4uo",
         "name": string, //"Синема сад",
@@ -15,8 +20,9 @@ Response:
 Фильмы в конкретном кинотеатре http://localhost:3001/api/movies?cinemaId={айдишка кинотеатра} ;  
 Конкретный фильм - http://localhost:3001/api/movie?movieId={айдишка фильма} (Response 1 - объект) -  
 Response:
+
 ```
-[ 
+[
     {
         "title": "Властелин колец: Братство Кольца",
         "posterUrl": "https://i.postimg.cc/pdCLNMqX/1.webp",
@@ -38,6 +44,7 @@ Response:
 Вct отзывы: http://localhost:3001/api/reviews ;  
 Отзывы конкретного фильма http://localhost:3001/api/reviews?movieId={айдишка фильма} (1 объект)  
 Response:
+
 ```
 [
     {

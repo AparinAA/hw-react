@@ -1,0 +1,63 @@
+.card {
+    display: flex;
+    background-color: var(--white);
+    padding: 24px;
+    width: 100%;
+    gap: 24px;
+    border-radius: 8px;
+}
+
+.poster {
+    border-radius: 8px;
+    height: auto;
+    width: auto;
+}
+
+.poster > img {
+    height: 120px;
+    width: 100px;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.blockName {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.blockHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.nameFilm {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.genre {
+    color: var(--text-primary);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.close {
+    display: inline;
+    max-width: max-content;
+    max-height: max-content;
+}
+
+.countAndDelete {
+    display: flex;
+    gap: 24px;
+}
