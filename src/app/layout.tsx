@@ -8,11 +8,19 @@ import "./globals.css";
 import StoreProvider from "@/redux/StoreProvider";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { Metadata } from "next";
 
 const inter = Roboto({
     subsets: ["cyrillic"],
     weight: ["400", "500", "700"],
 });
+
+export const metadata: Metadata = {
+    title: {
+        template: `%s | Biletopoisk`,
+        default: "Biletopoisk",
+    },
+};
 
 export default function RootLayout({
     children,

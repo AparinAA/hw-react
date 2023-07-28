@@ -1,48 +1,17 @@
-"use client";
-
-import { MoviesList } from "@/components";
+import { fetchMovies } from "@/services/api";
 import React from "react";
+import PageContainer from "./PageContainer";
 
-import styles from "./index.module.css";
-import { useSelector } from "react-redux";
-import { selectTicketBooking } from "@/redux/features/cart/selector";
-import { useGetMoviesQuery } from "@/redux/services/moviApi";
+import { Metadata } from "next";
 
-function Page() {
-    const { data, isLoading, error } = useGetMoviesQuery();
-    const ticketsBooking = useSelector((state) => selectTicketBooking(state));
-    const totalBooking = Object.values<number>(ticketsBooking).reduce(
-        (cur, acc) => cur + acc,
-        0
-    );
-    if (isLoading) {
-        return <span>Loading...</span>;
-    }
+export const metadata: Metadata = {
+    title: "CART",
+    description: "CART OF BILETOPOISK",
+};
 
-    if (!data || error) {
-        return <span>Not found</span>;
-    }
-
-    const movieOption = data.filter((movie) =>
-        ticketsBooking.hasOwnProperty(movie.id)
-    );
-
-    return (
-        <>
-            <div className={styles.cart}>
-                <main className={styles.mainCart}>
-                    <MoviesList
-                        movieOptions={movieOption}
-                        cart={Boolean(true)}
-                    />
-                </main>
-                <footer className={styles.totalCart}>
-                    <span>Итого билетов:</span>
-                    <span>{totalBooking}</span>
-                </footer>
-            </div>
-        </>
-    );
+async function PageCart() {
+    const movies = await fetchMovies("");
+    return <PageContainer movieOptions={movies} />;
 }
 
-export default Page;
+export default PageCart;

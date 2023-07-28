@@ -1,31 +1,19 @@
-"use client";
+import ContainerFilter from "@/components/filter/ContainerFilter";
+import styles from "./index.module.css";
+import { Filter, MoviesContainer } from "@/components";
 
-import styles from "./page.module.css";
-import { Filter, MoviesList } from "@/components";
-import { useFilter } from "@/hooks/useFilter";
-
-export default function Main() {
-    const { data, isLoading, error } = useFilter();
-
-    if (isLoading) {
-        return <span>Loading...</span>;
-    }
-
-    if (!data || error) {
-        return <span>Not found</span>;
-    }
-
+export default function Main({ searchParams }: any) {
     return (
         <>
             <div className={styles.main}>
                 <div className={styles.side}>
                     <div className={styles.filters}>
                         <h2 className={styles.filterHeader}>Фильтр поиска</h2>
-                        <Filter />
+                        <ContainerFilter />
                     </div>
                 </div>
                 <div className={styles.listFilms}>
-                    <MoviesList movieOptions={data} />
+                    <MoviesContainer cinemaId={searchParams.cinema} />
                 </div>
             </div>
         </>

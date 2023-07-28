@@ -1,5 +1,6 @@
 .main {
     display: flex;
+    flex: 1 1;
     height: 100%;
     gap: 24px;
 }
@@ -7,10 +8,9 @@
 .side {
     position: relative;
     display: flex;
-    flex-basis: 1;
     flex-direction: column;
     background-color: var(--white);
-    width: 408px;
+    width: max-content;
     padding: 24px;
     border-radius: 8px;
 }

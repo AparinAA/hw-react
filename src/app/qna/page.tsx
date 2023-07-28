@@ -1,10 +1,9 @@
-"use client";
-
 import { CardQA } from "@/components";
 import EmptyBlock from "@/components/emptyBlock/EmptyBlock";
 import React from "react";
 
 import styles from "./index.module.css";
+import { Metadata } from "next";
 
 const qaList = [
     {
@@ -24,6 +23,11 @@ const qaList = [
         answer: "Это даже мы не знаем.",
     },
 ];
+
+export const metadata: Metadata = {
+    title: "FAQ",
+    description: "Company FAQ page",
+};
 
 function Page() {
     return (

@@ -1,9 +1,13 @@
-"use client";
-
 import EmptyBlock from "@/components/emptyBlock/EmptyBlock";
 import React from "react";
 
 import styles from "./index.module.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "About",
+    description: "Page about the company",
+};
 
 function Page() {
     return (
