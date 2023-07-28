@@ -1,52 +1,15 @@
-"use client";
-
-import React, { ChangeEvent } from "react";
+import FilterCinema from "./FilterCinema";
+import FilterGenge from "./FilterGenge";
+import FilterInput from "./FilterInput";
 
 import styles from "./index.module.css";
-import { useDispatch } from "react-redux";
-import { filterActions } from "@/redux/features/filter";
 
-import FilterGenge from "./FilterGenge";
-import FilterCinema from "./FilterCinema";
-
-function debounce(fn: Function, t: number) {
-    let timer: NodeJS.Timeout;
-    return function (...args: any[]) {
-        clearTimeout(timer);
-        timer = setTimeout(() => fn(...args), t);
-    };
-}
-
-const debounceTime = 200;
-
-const Filter = () => {
-    const dispatch = useDispatch();
-
-    const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(
-            filterActions.addFilter({
-                select: {
-                    name: e?.target?.value,
-                    id: e?.target?.value,
-                },
-                type: "name",
-            })
-        );
-    };
-
+const Filter = ({ cinemas }: { cinemas: any[] }) => {
     return (
         <div className={styles.filter}>
-            <label className={styles.inputName}>
-                <span>Название</span>
-                <input
-                    className={styles.input}
-                    type="text"
-                    placeholder="Введите название"
-                    onChange={debounce(onChangeInput, debounceTime)}
-                />
-            </label>
+            <FilterInput />
             <FilterGenge />
-            <FilterCinema />
+            <FilterCinema data={cinemas} />
         </div>
     );
 };

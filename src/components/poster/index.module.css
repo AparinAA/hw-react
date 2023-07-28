@@ -1,0 +1,68 @@
+.movie {
+    display: flex;
+    background-color: var(--white);
+    padding: 24px;
+    border-radius: 8px;
+    gap: 32px;
+    width: 100%;
+    color: var(--text-primary);
+}
+
+.poster {
+    border-radius: 8px;
+    height: 500px;
+    width: auto;
+}
+
+.movieInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleText {
+    color: var(--text-primary);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 32px;
+    text-align: left;
+}
+
+.movieOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.optionName {
+    color: var(--text-primary);
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.optionName > span {
+    font-weight: 700;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.descriptionTitle {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+}

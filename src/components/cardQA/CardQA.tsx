@@ -11,11 +11,6 @@ interface Props {
 
 function CardQA({ question, answer }: Props) {
     const [isOpen, setOpen] = useState(false);
-
-    const changeState = (event: any) => {
-        setOpen(event.target.checked);
-    };
-
     return (
         <div className={styles.cardCollapse}>
             <div className={styles.outerField}>

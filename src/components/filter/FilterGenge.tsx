@@ -5,6 +5,7 @@ const FilterGenge = () => {
         id: g,
         name: g,
     }));
+
     return (
         <FilterDefault
             defaultTitle="Выберите жанр"

@@ -1,3 +1,5 @@
+"use client";
+
 import { createPortal } from "react-dom";
 
 import styles from "./index.module.css";
@@ -52,17 +54,21 @@ const DropdownContext = React.createContext<ContextDropdown>({
 const Dropdown = ({
     children,
     type,
+    onChange,
+    defaultValue,
 }: {
     children: React.ReactElement;
     type?: string;
+    onChange?: Function;
+    defaultValue?: { name: string; id: string };
 }) => {
-    const [select, setSelect] = useState({ name: "", id: "" });
+    const [select, setSelect] = useState(defaultValue || { name: "", id: "" });
     const [isOpen, setOpen] = useState(false);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(filterActions.addFilter({ select, type }));
+        onChange?.(type, select.id);
     }, [select]);
 
     return (
@@ -80,7 +86,7 @@ interface PropsItem {
     id: string;
 }
 
-Dropdown.Item = function Item({ children, title, id }: PropsItem) {
+function Item({ children, title, id }: PropsItem) {
     const { select, setSelect, setOpen } =
         useContext<ContextDropdown>(DropdownContext);
 
@@ -93,20 +99,19 @@ Dropdown.Item = function Item({ children, title, id }: PropsItem) {
             {title}
         </button>
     );
-};
+}
 
-Dropdown.Selected = function SelectedItem({
+function Selected({
     children,
-    defaultTitle,
 }: {
     children: React.ReactElement[] | React.ReactElement;
-    defaultTitle: string;
 }) {
     const { select, setSelect, isOpen, setOpen } =
         useContext<ContextDropdown>(DropdownContext);
 
     const [coords, setCoords] = useState<Coords | null>(null);
     const controlRef = useRef<HTMLButtonElement>(null);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     const getCoords = (): Coords | null => {
         const box = controlRef.current?.getBoundingClientRect();
@@ -122,6 +127,24 @@ Dropdown.Selected = function SelectedItem({
         return null;
     };
 
+    //закрываем селект если нажали по любому другому месту снаружи него
+    useEffect(() => {
+        const handClickOutside = (event: any) => {
+            if (
+                !menuRef.current?.contains(event.target) &&
+                !controlRef.current?.contains(event.target)
+            ) {
+                setOpen?.(false);
+            }
+        };
+
+        document.addEventListener("click", handClickOutside, true);
+
+        return () => {
+            document.removeEventListener("click", handClickOutside, true);
+        };
+    }, []);
+
     useEffect(() => {
         if (!isOpen) return;
         const coords = getCoords();
@@ -133,7 +156,10 @@ Dropdown.Selected = function SelectedItem({
     };
 
     const checkSelect =
-        !!select?.id && !!select?.name && select?.name !== "Не выбран";
+        !!select?.id &&
+        !!select?.name &&
+        select?.id !== "default" &&
+        select?.id !== "Не выбран";
     return (
         <div>
             <button
@@ -145,7 +171,7 @@ Dropdown.Selected = function SelectedItem({
                     checkSelect ? styles.dropdownSelected : ""
                 )}
             >
-                {checkSelect ? select.name : defaultTitle}
+                {select.name}
                 {iconArrow(isOpen)}
             </button>
             {isOpen &&
@@ -153,6 +179,7 @@ Dropdown.Selected = function SelectedItem({
                 createPortal(
                     <>
                         <div
+                            ref={menuRef}
                             className={styles.dropdownMenu}
                             style={{
                                 position: "absolute",
@@ -168,6 +195,7 @@ Dropdown.Selected = function SelectedItem({
                 )}
         </div>
     );
-};
+}
 
 export default Dropdown;
+export { Item, Selected };

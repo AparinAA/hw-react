@@ -8,21 +8,11 @@ import Link from "next/link";
 import { CountTicket } from "../countTicket/CountTicket";
 import Modal from "../modal/Modal";
 import { createPortal } from "react-dom";
-
-type movieOption = {
-    title: string;
-    posterUrl: string;
-    releaseYear: number;
-    description: string;
-    genre?: string;
-    id: string;
-    rating: number;
-    director: string;
-    reviewIds: string[];
-};
+// import { useGetMoviesCinemaQuery } from "@/redux/services/moviApi";
+import type { movieOption } from "@/types/types";
 
 interface Props {
-    movieOption: movieOption;
+    movie: movieOption;
     cart?: boolean;
 }
 
@@ -41,10 +31,10 @@ const iconClose = (
     </svg>
 );
 
-function CardFilm({ movieOption, cart }: Props) {
-    const { posterUrl, title, genre, id } = movieOption;
+function CardFilm({ movie, cart }: Props) {
     const [isOpen, setOpen] = useState(false);
 
+    const { posterUrl, title, genre, id } = movie;
     const isModalOpen =
         isOpen &&
         createPortal(
