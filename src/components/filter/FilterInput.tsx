@@ -3,7 +3,7 @@
 import React, { ChangeEvent, useCallback, useState } from "react";
 import styles from "./index.module.css";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import useDebounce from "./debounce";
+import useDebounce from "../../hooks/useDebounce";
 
 const debounceTime = 200;
 
@@ -40,7 +40,10 @@ function FilterInput() {
                 className={styles.input}
                 type="text"
                 placeholder="Введите название"
-                onChange={useDebounce(onChangeInput, debounceTime)}
+                onChange={useDebounce<ChangeEvent<HTMLInputElement>>(
+                    onChangeInput,
+                    debounceTime
+                )}
                 defaultValue={searchParams.get("name") ?? ""}
             />
         </label>
