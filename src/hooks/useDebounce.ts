@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 function useDebounce<T>(fn: (...args: T[]) => any, t: number) {
     let refA = useRef<T[]>();
@@ -12,7 +12,7 @@ function useDebounce<T>(fn: (...args: T[]) => any, t: number) {
 
     useEffect(() => clean, []);
 
-    return function (...args: T[]) {
+    return useCallback(function (...args: T[]) {
         refA.current = args;
         clean();
 
@@ -21,7 +21,7 @@ function useDebounce<T>(fn: (...args: T[]) => any, t: number) {
                 fn(...args);
             }
         }, t);
-    };
+    }, []);
 }
 
 export default useDebounce;
