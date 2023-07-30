@@ -12,6 +12,14 @@ function FilterInput() {
     const pathname = usePathname();
     const router = useRouter();
 
+    const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+        createQueryString("name", e?.target?.value);
+    };
+    const debounceTyping = useDebounce<ChangeEvent<HTMLInputElement>>(
+        onChangeInput,
+        debounceTime
+    );
+
     const createQueryString = useCallback(
         (name: string, value: string) => {
             const params = new URLSearchParams(
@@ -29,10 +37,6 @@ function FilterInput() {
         [searchParams]
     );
 
-    const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-        createQueryString("name", e?.target?.value);
-    };
-
     return (
         <label className={styles.inputName}>
             <span>Название</span>
@@ -40,10 +44,7 @@ function FilterInput() {
                 className={styles.input}
                 type="text"
                 placeholder="Введите название"
-                onChange={useDebounce<ChangeEvent<HTMLInputElement>>(
-                    onChangeInput,
-                    debounceTime
-                )}
+                onChange={debounceTyping}
                 defaultValue={searchParams.get("name") ?? ""}
             />
         </label>
