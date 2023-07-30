@@ -54,7 +54,6 @@ const FilterDefault = ({
 
     const checkDefault = options.find((op) => op.id === searchParams.get(type));
 
-    console.info("CHECK", checkDefault);
     return (
         <label className={styles.labelDropdown}>
             <span className={styles.nameDropdown}>{name}</span>

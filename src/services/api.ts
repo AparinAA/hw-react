@@ -42,7 +42,6 @@ export async function fetchMovie(movieId: string) {
 }
 
 export async function fetchMovies(cinemaId: string | undefined) {
-    console.info("GET MOVIES", cinemaId);
     const result = await fetch(
         `http://localhost:3001/api/movies?cinemaId=${cinemaId}`,
         { next: { tags: ["top10"] } }

@@ -8,7 +8,6 @@ import Link from "next/link";
 import { CountTicket } from "../countTicket/CountTicket";
 import Modal from "../modal/Modal";
 import { createPortal } from "react-dom";
-// import { useGetMoviesCinemaQuery } from "@/redux/services/moviApi";
 import type { movieOption } from "@/types/types";
 
 interface Props {
@@ -31,8 +30,7 @@ const iconClose = (
     </svg>
 );
 
-function CardFilmR({ movie, cart }: Props) {
-    console.info("RENDER CARD");
+export function CardFilm({ movie, cart }: Props) {
     const [isOpen, setOpen] = useState(false);
 
     const { posterUrl, title, genre, id } = movie;
@@ -85,5 +83,3 @@ function CardFilmR({ movie, cart }: Props) {
         </div>
     );
 }
-
-export const CardFilm = CardFilmR;

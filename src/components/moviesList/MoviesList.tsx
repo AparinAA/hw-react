@@ -1,20 +1,6 @@
-"use client";
-
 import React from "react";
 import { CardFilm } from "../card/CardFilm";
-import { useSearchParams } from "next/navigation";
-
-type movieOption = {
-    title: string;
-    posterUrl: string;
-    releaseYear: number;
-    description: string;
-    genre?: string;
-    id: string;
-    rating: number;
-    director: string;
-    reviewIds: string[];
-};
+import type { movieOption } from "@/types/types";
 
 interface PropsMoviesList {
     movieOptions?: movieOption[];

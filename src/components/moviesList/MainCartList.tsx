@@ -32,7 +32,7 @@ export function MainCartList({
     );
 }
 
-function CountTotalBooking() {
+export function CountTotalBooking() {
     const ticketsBooking = useSelector((state) => selectTicketBooking(state));
     const totalBooking = Object.values<number>(ticketsBooking).reduce(
         (cur, acc) => cur + acc,
@@ -40,15 +40,4 @@ function CountTotalBooking() {
     );
 
     return <>{totalBooking}</>;
-}
-
-export function FooterTotal() {
-    return (
-        <footer className={styles.totalCart}>
-            <span>Итого билетов:</span>
-            <span>
-                <CountTotalBooking />
-            </span>
-        </footer>
-    );
 }
