@@ -1,10 +1,10 @@
 import Dropdown, { Item, Selected } from "./Dropdown";
 import FilterDefault from "./FilterDefault";
 import styles from "./index.module.css";
-type Data = any;
+import type { Cinema } from "@/types/types";
 
 interface Props {
-    data: Data;
+    data: Cinema[];
 }
 
 const FilterCinema = ({ data }: Props) => {
@@ -26,7 +26,7 @@ const FilterCinema = ({ data }: Props) => {
     return (
         <FilterDefault
             defaultTitle="Выберите кинотеатр"
-            options={data}
+            options={data.map((item) => ({ id: item.id, name: item.name }))}
             type="cinema"
             name={name}
         />

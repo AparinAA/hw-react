@@ -31,7 +31,8 @@ const iconClose = (
     </svg>
 );
 
-function CardFilm({ movie, cart }: Props) {
+function CardFilmR({ movie, cart }: Props) {
+    console.info("RENDER CARD");
     const [isOpen, setOpen] = useState(false);
 
     const { posterUrl, title, genre, id } = movie;
@@ -85,4 +86,4 @@ function CardFilm({ movie, cart }: Props) {
     );
 }
 
-export { CardFilm };
+export const CardFilm = CardFilmR;

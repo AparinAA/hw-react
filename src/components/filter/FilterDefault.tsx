@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Dropdown, { Item, Selected } from "./Dropdown";
 
 import styles from "./index.module.css";
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 
 type Option = {
     id: string;

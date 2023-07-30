@@ -23,13 +23,18 @@ const cartIcon = (
     </svg>
 );
 
-function Header() {
-    const pathname = usePathname();
+function CountCartItems() {
     const ticketsBooking = useSelector((state) => selectTicketBooking(state));
     const totalBooking = Object.values<number>(ticketsBooking).reduce(
         (cur, acc) => cur + acc,
         0
     );
+
+    return !!totalBooking && <div className={styles.badge}>{totalBooking}</div>;
+}
+
+function Header() {
+    const pathname = usePathname();
 
     return (
         <header className={styles.header}>
@@ -39,10 +44,7 @@ function Header() {
                 "Билетопоиск"
             )}
             <Link className={styles.cartIcon} href="/cart">
-                {!!totalBooking && (
-                    <div className={styles.badge}>{totalBooking}</div>
-                )}
-
+                <CountCartItems />
                 {cartIcon}
             </Link>
         </header>

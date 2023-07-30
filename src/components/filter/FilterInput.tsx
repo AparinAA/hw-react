@@ -12,6 +12,7 @@ function FilterInput() {
     const pathname = usePathname();
     const router = useRouter();
 
+    console.info("INPUTT RENDER");
     const createQueryString = useCallback(
         (name: string, value: string) => {
             const params = new URLSearchParams(

@@ -1,0 +1,18 @@
+.mainCart {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    flex: 1 1;
+}
+
+.totalCart {
+    display: flex;
+    background-color: var(--white);
+    justify-content: space-between;
+    padding: 24px;
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 8px;
+}

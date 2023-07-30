@@ -21,28 +21,10 @@ interface PropsMoviesList {
     cart?: boolean;
 }
 
-const MoviesList = ({ movieOptions, cart }: PropsMoviesList) => {
-    const searchParams = useSearchParams();
-    const name = searchParams.get("name");
-    const genre = searchParams.get("genre");
-
-    const filtermovieOptions = movieOptions
-        ?.filter((d) => {
-            if (name && name.toLowerCase() !== "Введите название") {
-                return d.title.toLowerCase().startsWith(name.toLowerCase());
-            }
-            return true;
-        })
-        ?.filter((d) => {
-            if (genre && genre !== "Выберите жанр" && genre !== "Не выбран") {
-                return d.genre === genre;
-            }
-
-            return true;
-        });
+export const MoviesList = ({ movieOptions, cart }: PropsMoviesList) => {
     return (
         <>
-            {filtermovieOptions?.map((movieOption: any) => (
+            {movieOptions?.map((movieOption: any) => (
                 <CardFilm
                     movie={movieOption}
                     key={movieOption.id}
@@ -52,5 +34,3 @@ const MoviesList = ({ movieOptions, cart }: PropsMoviesList) => {
         </>
     );
 };
-
-export { MoviesList };

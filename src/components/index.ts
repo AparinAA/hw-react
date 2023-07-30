@@ -7,6 +7,7 @@ export { CountTicket } from "./countTicket/CountTicket";
 export { MoviesList } from "./moviesList/MoviesList";
 export { MoviesListMain } from "./moviesList/MoviesListFilter";
 export { MoviesContainer } from "./moviesList/MoviesContainer";
+export { MainCartList, FooterTotal } from "./moviesList/MainCartList";
 export { Filter } from "./filter/Filter";
 export { Review } from "./rewievs/Review";
 export { Reviews } from "./rewievs/Reviews";
